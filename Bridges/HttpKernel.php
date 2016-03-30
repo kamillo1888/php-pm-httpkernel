@@ -148,6 +148,7 @@ class HttpKernel implements BridgeInterface
 
         $class = $this->bootstrap->requestClass();
 
+        SymfonyRequest::setTrustedProxies(array($_SERVER['REMOTE_ADDR']));
         $syRequest = new $class($query, $post, $attributes = [], $cookies, $files, $_SERVER, $reactRequest->getBody());
 
         $syRequest->setMethod($method);
